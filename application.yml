@@ -1,1 +1,2 @@
-config.name=YML
+config:
+  name: YML
