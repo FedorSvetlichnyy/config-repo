@@ -41,7 +41,7 @@ resilience4j:
       accountServiceCircuitBreaker:
         baseConfig: default
         wait-duration-in-open-state: 6s
-      resourcesServiceRetry:
+      resourcesServiceCircuitBreaker:
         baseConfig: default
         wait-duration-in-open-state: 7s
     circuit-breaker-aspect-order: 2
