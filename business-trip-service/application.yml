@@ -24,3 +24,37 @@ springdoc:
     enabled: true
     version: openapi_3_0
   override-with-generic-response: false
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        register-health-indicator: true
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 2
+        minimum-number-of-calls: 1
+        permitted-number-of-calls-in-half-open-state: 3
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 5s
+        failure-rate-threshold: 50
+    instances:
+      accountServiceCircuitBreaker:
+        baseConfig: default
+        wait-duration-in-open-state: 6s
+      resourcesServiceRetry:
+        baseConfig: default
+        wait-duration-in-open-state: 7s
+    circuit-breaker-aspect-order: 2
+
+  retry:
+    configs:
+      default:
+        maxAttempts: 10
+        waitDuration: 5000ms
+    retry-aspect-order: 1
+
+feign:
+  circuitbreaker:
+    enabled: true
+  retry:
+    enabled: true
