@@ -58,6 +58,3 @@ feign:
     enabled: true
   retry:
     enabled: true
-
-config:
-  name: REPO
