@@ -50,7 +50,7 @@ resilience4j:
     configs:
       default:
         maxAttempts: 10
-        waitDuration: 5000ms
+        waitDuration: 4000ms
     retry-aspect-order: 1
 
 feign:
